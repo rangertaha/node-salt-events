@@ -1,15 +1,10 @@
 
-//var event = require('../lib/saltevents');
-var assert = require('assert');
 
 
+event = require('../lib/saltevents');
 
 
-
-describe('user',function(){
-    describe('create',function(){
-        console.log("Hello Test")
-    });
-});
+console.log('Hello World')
 
 
+event.local()
