@@ -2,15 +2,15 @@
   "author": "Rangertaha <rangertaha@gmail.com>",
   "name": "saltevents",
   "description": "Send a message on the salt events bus.",
-  "version": "0.0.1",
+  "version": "0.0.01",
   "repository": {
-    "url": ""
+    "url": "https://github.com/rangertaha/node-salt-events"
   },
   "main": "./lib/saltevents",
   "keywords": [
-    "upper",
-    "case",
-    "file"
+    "salt event system",
+    "saltstack",
+    "salt"
   ],
   "bin": {
     "saltevents": "./bin/saltevents"

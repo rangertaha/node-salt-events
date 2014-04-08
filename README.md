@@ -25,21 +25,35 @@ Requirements
 Installing
 -----------
 
+    npm install saltevents
+
+
 
 Application Usage
 -----------
 
 
-  event = require('../lib/saltevents');
+    // Import the saltevents module
+    event = require('saltevents');
+
+
+    payload = {
+      'hello': 'world',
+      'status': 'success'
+    }
+
+    // Send payload to local bus
+    event.local(payload, 'tag');
+
+    // Send payload to the master
+    event.master(payload, 'tag');
 
 
 
+ToDO
+----
 
-    event.local({"hello":"world"}, 'tag');
-    event.master({"hello":"world"}, 'tag');
-
-
-Shell Usage
------------
-
-
+   * Use on the command line
+   * Send events to the minion from the master
+   * Get events from the socket
+   * Listen for events on the socket and process it with callback function

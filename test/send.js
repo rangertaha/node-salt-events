@@ -1,10 +1,16 @@
-
-
+#!/usr/bin/env node
 
 event = require('../lib/saltevents');
 
 
+payload = {
+  'hello': 'world',
+  'status': 'success'
+}
 
+// Send payload to local bus
+event.local(payload, 'tag');
 
-event.local({"hello":"world"}, 'tag');
-event.master({"hello":"world"}, 'tag');
+// Send payload to the master
+event.master(payload, 'tag');
+
