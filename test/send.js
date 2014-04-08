@@ -4,7 +4,7 @@
 event = require('../lib/saltevents');
 
 
-console.log('Hello World')
 
 
-event.local()
+event.local({"hello":"world"}, 'tag');
+event.master({"hello":"world"}, 'tag');
