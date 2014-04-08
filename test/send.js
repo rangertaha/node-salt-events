@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-event = require('../lib/saltevents');
+var saltEvents = require('../lib/saltevents');
 
 
 payload = {
@@ -9,8 +9,8 @@ payload = {
 }
 
 // Send payload to local bus
-event.local(payload, 'tag');
+saltEvents.local(payload, 'local');
 
 // Send payload to the master
-event.master(payload, 'tag');
+saltEvents.master(payload, 'master');
 

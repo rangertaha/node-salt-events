@@ -34,7 +34,7 @@ Application Usage
 
 
     // Import the saltevents module
-    event = require('saltevents');
+    saltEvents = require('saltevents');
 
 
     payload = {
@@ -43,10 +43,10 @@ Application Usage
     }
 
     // Send payload to local bus
-    event.local(payload, 'tag');
+    saltEvents.local(payload, 'tag');
 
     // Send payload to the master
-    event.master(payload, 'tag');
+    saltEvents.master(payload, 'tag');
 
 
 
