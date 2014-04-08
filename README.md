@@ -30,7 +30,7 @@ Application Usage
 -----------
 
 
-    event = require('../lib/saltevents');
+        event = require('../lib/saltevents');
 
 
 
