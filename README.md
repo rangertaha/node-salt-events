@@ -34,7 +34,7 @@ Application Usage
 
 
     // Import the saltevents module
-    saltEvents = require('saltevents');
+    var saltEvents = require('saltevents');
 
 
     payload = {
