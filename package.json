@@ -4,6 +4,7 @@
   "description": "Send a message on the salt events bus.",
   "version": "0.0.01",
   "repository": {
+    "type" : "git"
     "url": "https://github.com/rangertaha/node-salt-events"
   },
   "main": "./lib/saltevents",
