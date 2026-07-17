@@ -1,4 +1,7 @@
 node_modules/
-.idea/
-*.pyc
+npm-debug.log*
 *.log
+*.tgz
+.idea/
+.vscode/
+.DS_Store

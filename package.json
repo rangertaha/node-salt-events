@@ -1,23 +1,39 @@
 {
-  "author": "Rangertaha <rangertaha@gmail.com>",
   "name": "saltevents",
-  "description": "Send a message on the salt events bus.",
-  "version": "0.0.3",
-  "repository": {
-    "type" : "git",
-    "url": "https://github.com/rangertaha/node-salt-events"
-  },
-  "main": "./lib/saltevents",
-  "keywords": [
-    "salt event system",
-    "saltstack",
-    "salt"
-  ],
+  "version": "1.0.0",
+  "description": "Fire events on the SaltStack event bus from Node.js.",
+  "author": "Rangertaha <rangertaha@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": "./src/index.js",
   "bin": {
-    "saltevents": "./bin/saltevents"
+    "saltevents": "./bin/saltevents.js"
   },
-  "dependencies": {},
+  "files": [
+    "src",
+    "bin",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rangertaha/node-salt-events.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rangertaha/node-salt-events/issues"
+  },
+  "homepage": "https://github.com/rangertaha/node-salt-events#readme",
+  "keywords": [
+    "salt",
+    "saltstack",
+    "salt event system",
+    "event bus",
+    "salt-call"
+  ],
   "engines": {
-    "node": "*"
+    "node": ">=20"
   }
 }
