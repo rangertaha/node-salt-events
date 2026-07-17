@@ -54,6 +54,11 @@ test('rejects when tag is missing or empty', async () => {
   await assert.rejects(local({}), TypeError);
 });
 
+test('rejects when data is not JSON-serializable', async () => {
+  await assert.rejects(local(undefined, 'tag'), /JSON-serializable/);
+  await assert.rejects(local(() => {}, 'tag'), /JSON-serializable/);
+});
+
 test('rejects when salt-call exits non-zero, exposing stderr', async (t) => {
   process.env.FAKE_SALT_EXIT = '2';
   t.after(() => {

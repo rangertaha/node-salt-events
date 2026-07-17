@@ -10,9 +10,13 @@ function fire(fn, data, tag, options = {}) {
   if (typeof tag !== 'string' || tag.length === 0) {
     return Promise.reject(new TypeError('tag must be a non-empty string'));
   }
+  const payload = JSON.stringify(data);
+  if (payload === undefined) {
+    return Promise.reject(new TypeError('data must be JSON-serializable'));
+  }
 
   const { saltCall, sudo, timeout } = { ...DEFAULTS, ...options };
-  const args = ['--out', 'json', fn, JSON.stringify(data), tag];
+  const args = ['--out', 'json', fn, payload, tag];
   const command = sudo ? 'sudo' : saltCall;
   const commandArgs = sudo ? [saltCall, ...args] : args;
 

@@ -88,6 +88,12 @@ test('missing tag exits 2 with an error', async () => {
   assert.match(stderr, /missing tag/);
 });
 
+test('extra positional arguments exit 2 with an error', async () => {
+  const { code, stderr } = await run(['local', '{}', 'tag', 'oops']);
+  assert.equal(code, 2);
+  assert.match(stderr, /unexpected argument 'oops'/);
+});
+
 test('invalid JSON payload exits 2 with an error', async () => {
   const { code, stderr } = await run(['local', 'not json', 'tag']);
   assert.equal(code, 2);

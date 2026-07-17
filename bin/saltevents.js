@@ -67,6 +67,7 @@ if (!command) fail('missing command');
 if (command !== 'local' && command !== 'master') fail(`unknown command '${command}'`);
 if (rawData === undefined) fail('missing json-data argument');
 if (!tag) fail('missing tag argument');
+if (positionals.length > 3) fail(`unexpected argument '${positionals[3]}'`);
 
 let data;
 try {
