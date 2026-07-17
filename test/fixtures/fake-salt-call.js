@@ -7,7 +7,10 @@ if (process.env.FAKE_SALT_EXIT) {
   process.exit(Number(process.env.FAKE_SALT_EXIT));
 }
 
-if (process.env.FAKE_SALT_OUTPUT) {
+if (process.env.FAKE_SALT_SLEEP) {
+  // Stay alive long enough for timeout tests to kill us.
+  setTimeout(() => {}, Number(process.env.FAKE_SALT_SLEEP));
+} else if (process.env.FAKE_SALT_OUTPUT) {
   console.log(process.env.FAKE_SALT_OUTPUT);
 } else {
   console.log(JSON.stringify({ argv: process.argv.slice(2) }));

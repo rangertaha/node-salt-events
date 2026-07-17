@@ -33,17 +33,25 @@ function fail(message) {
   process.exit(2);
 }
 
-const { values, positionals } = parseArgs({
-  allowPositionals: true,
-  options: {
-    'salt-call': { type: 'string' },
-    sudo: { type: 'boolean' },
-    'no-sudo': { type: 'boolean' },
-    timeout: { type: 'string' },
-    help: { type: 'boolean', short: 'h' },
-    version: { type: 'boolean', short: 'v' },
-  },
-});
+let values, positionals;
+try {
+  ({ values, positionals } = parseArgs({
+    allowPositionals: true,
+    options: {
+      'salt-call': { type: 'string' },
+      sudo: { type: 'boolean' },
+      'no-sudo': { type: 'boolean' },
+      timeout: { type: 'string' },
+      help: { type: 'boolean', short: 'h' },
+      version: { type: 'boolean', short: 'v' },
+    },
+  }));
+} catch (error) {
+  if (typeof error.code === 'string' && error.code.startsWith('ERR_PARSE_ARGS')) {
+    fail(error.message);
+  }
+  throw error;
+}
 
 if (values.help) {
   console.log(HELP);
@@ -67,8 +75,13 @@ try {
   fail(`json-data is not valid JSON: ${error.message}`);
 }
 
+if (values.sudo && values['no-sudo']) fail('--sudo and --no-sudo are mutually exclusive');
+
 const options = {};
-if (values['salt-call']) options.saltCall = values['salt-call'];
+if (values['salt-call'] !== undefined) {
+  if (values['salt-call'] === '') fail('--salt-call requires a non-empty path');
+  options.saltCall = values['salt-call'];
+}
 if (values['no-sudo']) options.sudo = false;
 else if (values.sudo) options.sudo = true;
 if (values.timeout !== undefined) {

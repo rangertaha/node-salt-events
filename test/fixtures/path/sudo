@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+// Test stand-in for sudo: reports its own arguments as JSON instead of
+// escalating, so tests can assert how the library builds the sudo command.
+console.log(JSON.stringify({ sudoArgv: process.argv.slice(2) }));
